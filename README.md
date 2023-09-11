@@ -18,6 +18,23 @@
 [Python Jupyter Remote Docker.code-profile](./Python%20Jupyter%20Remote%20Docker.code-profile)
 В него включен как набор необходимых расширений, так и ряд косметических и [QOL](## "Quality of life") изменений.
 
+### Системные требования
+
+Оперативная память: 8Гб
+
+### Особенности работы на Windows 
+
+В силу особенности реализации контейнеризации на ОС Windows - рекомендуется ограничить потребление ресурсов системой WSL. 
+Для этого достаточно создать файл `C:/Users/%Имя пользователя%/.wslconfig` со следующим содержимим:
+
+```
+[wsl2]
+memory=8GB
+processors=4
+```
+
+Данный файл позволяет установить лимит потребления ресурсов WSL
+
 ## Порядок запуска
 
 1. Склонировать себе настоящий репозиторий
@@ -27,21 +44,35 @@
     cd .\prerequisites\
     ```
 
-2. Выполнить следующую команду, подготавливающую к запуску **Apache airflow**
+2. Предварительно, перед запуском контейнеров, необходимо выполнить следующую команду:
 
     ```bash
-    docker compose up airflow-init
+    docker network create data-engineering-labs-network
     ```
 
-3. Выполнить следующую команду, запускающую все необходимые контейнеры.
+3. Выполнить следующую команду, подготавливающую к запуску **Apache airflow**
 
     ```bash
-    docker compose up --build -d
+    docker compose -f docker-compose.airflow.yaml up airflow-init
     ```
 
-4. В результате должны быть запущены все контейнеры.
+4. Для запуска, `airflow` `nifi` `elasticsearch` `posgresql` используются следующие, соответственно, команды.
 
-    ![Результат](./images/prerequisites-goal.png)
+    ```bash
+    docker compose -f docker-compose.airflow.yaml up --build -d
+    ```    
+    
+    ```bash
+    docker compose -f docker-compose.nifi.yaml up --build -d
+    ```    
+    
+    ```bash
+    docker compose -f docker-compose.elasticsearch.yaml up --build -d
+    ```    
+    
+    ```bash
+    docker compose -f docker-compose.postgresql.yaml up --build -d
+    ```
 
 ## Перечень сервисов с их адресами
 
