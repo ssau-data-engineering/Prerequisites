@@ -7,6 +7,8 @@ services:
     ports:
       - 19200:9200
       - 15601:5601
+    networks:
+      - data-engineering-labs-network
 
 networks:
   data-engineering-labs-network:
