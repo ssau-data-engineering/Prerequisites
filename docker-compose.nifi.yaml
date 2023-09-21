@@ -14,11 +14,10 @@ services:
       - ./nifi/drivers:/opt/nifi/nifi-current/drivers
       - ./nifi/templates:/opt/nifi/nifi-current/templates
       - ./nifi/data:/opt/nifi/nifi-current/data
-    networks:
-      - data-engineering-labs-network
     ports:
       - 18080:18080
 
 networks:
-  data-engineering-labs-network:
+  default: 
     external: true
+    name: data-engineering-labs-network

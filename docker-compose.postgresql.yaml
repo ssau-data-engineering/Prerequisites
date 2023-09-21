@@ -31,5 +31,6 @@ volumes:
   postgres-db-workspace-volume:
 
 networks:
-  data-engineering-labs-network:
+  default: 
     external: true
+    name: data-engineering-labs-network
