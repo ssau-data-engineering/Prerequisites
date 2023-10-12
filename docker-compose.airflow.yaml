@@ -3,6 +3,14 @@ name: airflow
 
 services:
 
+  docker-proxy:
+    image: docker:24-dind
+    privileged: true
+    environment:
+      DOCKER_TLS_CERTDIR: ""
+    volumes:
+      - airflow-data-volume:/data
+
   airflow-scheduler:
     extends:
       file: airflow/docker-compose.yaml
