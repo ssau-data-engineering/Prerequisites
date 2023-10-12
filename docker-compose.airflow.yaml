@@ -9,7 +9,7 @@ services:
     environment:
       DOCKER_TLS_CERTDIR: ""
     volumes:
-      - airflow-data-volume:/data
+      - ./airflow/data:/data
 
   airflow-scheduler:
     extends:
