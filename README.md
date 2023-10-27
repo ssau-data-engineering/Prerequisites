@@ -56,7 +56,7 @@ processors=4
     docker compose -f docker-compose.airflow.yaml up airflow-init
     ```
 
-4. Для запуска, `airflow` `nifi` `elasticsearch` `posgresql` используются следующие, соответственно, команды.
+4. Для запуска, `airflow` `nifi` `elasticsearch` `posgresql` `mlflow` используются следующие, соответственно, команды.
 
     ```bash
     docker compose -f docker-compose.airflow.yaml up --build -d
@@ -74,12 +74,18 @@ processors=4
     docker compose -f docker-compose.postgresql.yaml up --build -d
     ```
 
+    ```bash
+    docker compose -f docker-compose.mlflow.yaml up --build -d
+    ```
+
 ## Перечень сервисов с их адресами
 
 * pgAdmin: <http://localhost:18081/>  (`pgadmin4@pgadmin.org`@`admin`)
 * Kibana: <http://localhost:15601/>
 * Apache Airflow: <http://localhost:8080/> (`airflow`@`airflow`)
 * Apache Nifi: <http://localhost:18080/>
+* MLflow: <http://localhost:5001>
+* Minio: <http://localhost:9000> (`minio`@`minio123`)
 
 ## Знакомство с инструментами
 

@@ -3,3 +3,4 @@ nifi/**
 
 !.gitkeep
 !airflow/docker-compose.yaml
+!airflow/Dockerfile
